@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package talk.v1;
+
+import "types/v1/types.proto";
+
+message SendMessageRequest {
+  types.v1.Message message = 1;
+}
+message SendMessageResponse {
+  types.v1.Message message = 1;
+}
+
+message SendReadReceiptRequest {
+  string message_id = 1;
+}
+message SendReadReceiptResponse {
+}
+
+service TalkService {
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
+  rpc SendReadReceipt(SendReadReceiptRequest) returns (SendReadReceiptResponse) {};
+  // CreateGroup
+  // InviteIntoGroup
+  // JoinGroupViaInvitation
+}
