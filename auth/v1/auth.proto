@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-import "protocol/types/v1/types.proto";
+import "types/v1/types.proto";
 
 message LoginWithEmailRequest {
   string email = 1;
