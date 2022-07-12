@@ -93,7 +93,7 @@ message Operation {
   string param1 = 20;
   string param2 = 21;
   string param3 = 22;
-  google.protobuf.Timestamp crated_at = 40;
+  google.protobuf.Timestamp created_at = 40;
 }
 
 // === auth service ===
