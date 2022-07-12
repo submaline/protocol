@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package auth.v1;
+
+import "types/v1/types.proto";
+
+message LoginWithEmailRequest {
+  string email = 1;
+  string password = 2;
+}
+message LoginWithEmailResponse {
+  types.v1.AuthToken auth_token = 1;
+}
+
+message UpdatePasswordRequest {
+  string password = 1;
+}
+message UpdatePasswordResponse {
+}
+
+
+service AuthService {
+  rpc LoginWithEmail(LoginWithEmailRequest) returns (LoginWithEmailResponse) {}
+  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse) {}
+}

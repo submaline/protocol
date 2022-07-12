@@ -78,7 +78,13 @@ enum OperationType {
   OPERATION_TYPE_GET_PROFILE = 402;
   OPERATION_TYPE_UPDATE_PROFILE = 403; // プロフィールを更新した
   OPERATION_TYPE_UPDATE_PROFILE_RECV = 404; // プロフィール更新を受信した
+
+
+  // 500番台 auth service
+  OPERATION_TYPE_LOGIN_WITH_EMAIL = 500;
+  OPERATION_TYPE_UPDATE_PASSWORD = 501;
 }
+
 message Operation {
   int64 id = 1; // bigint
   OperationType type = 2; // int
@@ -88,4 +94,11 @@ message Operation {
   string param2 = 21;
   string param3 = 22;
   google.protobuf.Timestamp crated_at = 40;
+}
+
+// === auth service ===
+message AuthToken {
+  string token = 1;
+  int64  expires_in = 2;
+  string refresh_token = 3;
 }
