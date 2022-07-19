@@ -83,6 +83,7 @@ enum OperationType {
   // 500番台 auth service
   OPERATION_TYPE_LOGIN_WITH_EMAIL = 500;
   OPERATION_TYPE_UPDATE_PASSWORD = 501;
+  OPERATION_TYPE_TOKEN_REFRESH = 502;
 }
 
 message Operation {
