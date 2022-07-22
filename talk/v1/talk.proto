@@ -20,7 +20,10 @@ message SendReadReceiptResponse {
 service TalkService {
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
   rpc SendReadReceipt(SendReadReceiptRequest) returns (SendReadReceiptResponse) {};
+  // TODO:
   // CreateGroup
   // InviteIntoGroup
   // JoinGroupViaInvitation
+  // LeaveGroup
+  // KickoutFromGroup
 }

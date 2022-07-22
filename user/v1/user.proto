@@ -33,9 +33,47 @@ message UpdateProfileResponse {
   types.v1.Profile profile = 1;
 }
 
+message AddFriendRequest {
+  string user_id = 1;
+}
+message AddFriendResponse {}
+
+message GetFriendsRequest {}
+message GetFriendsResponse {
+  repeated string user_ids = 1;
+}
+
+message BlockUserRequest {
+  string user_id = 1;
+}
+message BlockUserResponse {}
+
+message GetBlockingUsersRequest {}
+message GetBlockingUsersResponse {
+  repeated string user_ids = 1;
+}
+
+message UnBlockUserRequest {
+  string user_id = 1;
+}
+message UnBlockUserResponse {}
+
+
 service UserService {
+  // アカウント
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {};
   rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {};
+
+  // プロフィール
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse) {};
   rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse) {};
+
+  // 友達
+  rpc AddFriend(AddFriendRequest) returns (AddFriendResponse) {};
+  rpc GetFriends(GetFriendsRequest) returns (GetFriendsResponse) {};
+  
+  // ブロック
+  rpc BlockUser(BlockUserRequest) returns (BlockUserResponse) {};
+  rpc GetBlockingUsers(GetBlockingUsersRequest) returns (GetBlockingUsersResponse) {};
+  rpc UnBlockUser(UnBlockUserRequest) returns (UnBlockUserResponse) {};
 }
