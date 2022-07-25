@@ -17,13 +17,55 @@ message SendReadReceiptRequest {
 message SendReadReceiptResponse {
 }
 
+message CreateGroupRequest {
+  types.v1.Group group = 1;
+}
+message CreateGroupResponse {
+  types.v1.Group group = 1;
+}
+
+message UpdateGroupRequest {
+  types.v1.Group group = 1;
+}
+message UpdateGroupResponse {
+  types.v1.Group group = 1;
+}
+
+message InviteIntoGroupRequest {
+  string group_id = 1;
+  string user_id = 2;
+}
+message InviteIntoGroupResponse {
+}
+
+message JoinGroupViaInvitationRequest {
+  string group_id = 1;
+}
+message JoinGroupViaInvitationResponse {
+}
+
+message LeaveGroupRequest {
+  string group_id = 1;
+}
+message LeaveGroupResponse {
+}
+
+message KickOutFromGroupRequest {
+  string group_id = 1;
+  string user_id = 2;
+}
+message KickOutFromGroupResponse {
+}
+
+
 service TalkService {
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
   rpc SendReadReceipt(SendReadReceiptRequest) returns (SendReadReceiptResponse) {};
-  // TODO:
-  // CreateGroup
-  // InviteIntoGroup
-  // JoinGroupViaInvitation
-  // LeaveGroup
-  // KickoutFromGroup
+
+  rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse) {};
+  rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse) {};
+  rpc InviteIntoGroup(InviteIntoGroupRequest) returns (InviteIntoGroupResponse) {};
+  rpc JoinGroupViaInvitation(JoinGroupViaInvitationRequest) returns (JoinGroupViaInvitationResponse) {};
+  rpc LeaveGroup(LeaveGroupRequest) returns (LeaveGroupResponse) {};
+  rpc KickOutFromGroup(KickOutFromGroupRequest) returns (KickOutFromGroupResponse) {};
 }

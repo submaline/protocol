@@ -39,6 +39,18 @@ message Message {
   string metadata = 6; // json, '{}'
 }
 
+message Group {
+  string id = 1;
+  string display_name = 2;
+  string icon_path = 3;
+  string description = 4;
+  string metadata = 5;
+
+  string creator = 30;
+  repeated string members = 31;
+
+  google.protobuf.Timestamp created_at = 40;
+}
 
 // === operation service ===
 enum OperationType {
@@ -64,11 +76,21 @@ enum OperationType {
 
   OPERATION_TYPE_CREATE_GROUP = 304;
 
-  OPERATION_TYPE_INVITE_INTO_GROUP = 305;
-  OPERATION_TYPE_INVITE_INTO_GROUP_RECV = 306;
+  OPERATION_TYPE_UPDATE_GROUP = 305;
+  OPERATION_TYPE_UPDATE_GROUP_RECV = 306;
 
-  OPERATION_TYPE_JOIN_GROUP_VIA_INVITATION = 307;
-  OPERATION_TYPE_JOIN_GROUP_VIA_INVITATION_RECV = 308;
+  OPERATION_TYPE_INVITE_INTO_GROUP = 307;
+  OPERATION_TYPE_INVITE_INTO_GROUP_RECV = 308;
+
+  OPERATION_TYPE_JOIN_GROUP_VIA_INVITATION = 309;
+  OPERATION_TYPE_JOIN_GROUP_VIA_INVITATION_RECV = 310;
+
+  OPERATION_TYPE_LEAVE_GROUP = 311;
+  OPERATION_TYPE_LEAVE_GROUP_RECV = 312;
+
+  OPERATION_TYPE_KICK_OUT_FROM_GROUP = 313;
+  OPERATION_TYPE_KICK_OUT_FROM_GROUP_RECV = 314;
+
 
 
   // 400番台 user service
@@ -79,6 +101,13 @@ enum OperationType {
   OPERATION_TYPE_UPDATE_PROFILE = 403; // プロフィールを更新した
   OPERATION_TYPE_UPDATE_PROFILE_RECV = 404; // プロフィール更新を受信した
 
+  OPERATION_TYPE_ADD_FRIEND = 405; // 友達追加した
+  OPERATION_TYPE_ADD_FRIEND_RECV = 406; // 友達追加されたのを受信した
+  OPERATION_TYPE_GET_FRIENDS = 407;
+
+  OPERATION_TYPE_BLOCK_USER = 408;
+  OPERATION_TYPE_GET_BLOCKING_USERS = 409;
+  OPERATION_TYPE_UNBLOCK_USER = 410;
 
   // 500番台 auth service
   OPERATION_TYPE_LOGIN_WITH_EMAIL = 500;
@@ -91,9 +120,11 @@ message Operation {
   OperationType type = 2; // int
   string source = 3; // varchar(~128)
   repeated string destination = 4; // [varchar(128), ...]
+  
   string param1 = 20;
   string param2 = 21;
   string param3 = 22;
+
   google.protobuf.Timestamp created_at = 40;
 }
 
