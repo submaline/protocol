@@ -48,6 +48,7 @@ message Group {
 
   string creator = 30;
   repeated string members = 31;
+  repeated string invitees = 32;
 
   google.protobuf.Timestamp created_at = 40;
 }
